@@ -43,7 +43,7 @@ function Result({query}: Props) {
         if(query !== '')
             endpoint = `${API_URL}search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=${state.page}`;
         fetchItems(endpoint);
-    }, [query, state.page]);
+    }, [query]);
 
     return (
         <InfiniteScroll 

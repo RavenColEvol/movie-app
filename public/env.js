@@ -179,7 +179,7 @@ window.env = {
   "npm_package_devDependencies_postcss_cli": "^7.1.1",
   "npm_package_devDependencies_tailwindcss": "^1.4.6",
   "npm_package_eslintConfig_extends": "react-app",
-  "npm_package_gitHead": "f3fe1027cc6ec269ffaca5f8652ec655a690e3bc",
+  "npm_package_gitHead": "f404537f85ac099a5bcfc82e4458f58e86e86eea",
   "npm_package_name": "movie",
   "npm_package_private": "true",
   "npm_package_readmeFilename": "README.md",
