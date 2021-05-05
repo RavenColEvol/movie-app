@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { API_URL, API_KEY } from '../config'
 import SidebarItem from './SidebarItem'
 
@@ -8,7 +6,7 @@ const nowPlayingUrl = `${API_URL}movie/now_playing?api_key=${API_KEY}&language=e
 const topRatedUrl = `${API_URL}movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
 const aroundTheWebUrl = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
 
-export default function() {
+export default function Sidebar() {
 
     return (
         <>

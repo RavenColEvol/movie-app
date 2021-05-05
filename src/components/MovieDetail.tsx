@@ -1,15 +1,44 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect, CSSProperties} from 'react'
 
 import SimilarMovies from './SimilarMovies'
 import Title from './Title'
 
 import {IMAGE_BASE_URL, BACKDROP_SIZE, API_URL, API_KEY} from '../config'
+import { RouteComponentProps } from 'react-router'
 
+interface MatchParams {
+    movie_id: string
+}
 
-export default function MovieDetail(props) {
+interface Props extends RouteComponentProps<MatchParams> {
+};
+
+export interface IMovie {
+    id: number;
+    original_language: string;
+    poster_path: string;
+    backdrop_path: string;
+    title: string;
+    tagline: string;
+    vote_average: number;
+    runtime: number;
+    status: boolean;
+    overview: string;
+    genres: { name: string }[]
+}
+
+export default function MovieDetail(props: Props) {
 
     const [movie, setMovie] = useState({
-        genres:[]
+        poster_path: '',
+        backdrop_path: '',
+        title: '',
+        tagline: '',
+        vote_average: 0,
+        runtime: 0,
+        status: "",
+        overview: '',
+        genres: [{ name: '' }]
     })
 
     useEffect(()=>{
@@ -34,7 +63,7 @@ export default function MovieDetail(props) {
                     <h1 className='md:text-4xl text-2xl text-gray-800 tracking-wide uppercase font-light'>{movie.title}</h1>
                     <h2 className='text-gray-800 font-semibold mb-3 text-sm md:text-normal'>{movie.tagline}</h2>
                     <div className='flex justify-between'>
-                        <div className="stars mb-6" style={{"--rating":movie.vote_average, "--star-size":'25px'}}></div>
+                        <div className="stars mb-6" style={{"--rating":movie.vote_average, "--star-size":'25px'} as CSSProperties}></div>
                         <p className='text-gray-600 font-bold text-xs uppercase'>{movie.runtime}min / {movie.status}</p>
                     </div>
 

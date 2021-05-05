@@ -1,24 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { IMAGE_BASE_URL, MINI_SIZE } from '../config'
+import { IMovie } from './MovieDetail';
 
+interface Props {
+    url: string;
+    type: string
+}
 
-export default function (props) {
+export default function SideBarItem({url, type}: Props) {
     const [open, setOpen] = useState(false);
-    const [state, setState] = useState([]);
+    const [state, setState] = useState([] as IMovie[]);
 
     const handleToggle = () => setOpen(!open)
 
     useEffect(() => {
-        const { url } = props;
         fetch(url)
         .then(res => res.json())
         .then(res => setState(res?.results?.splice(0, 5) || []));
-    }, []);
+    }, [url]);
 
     return (
         <>
-            <p className='text-white font-bold py-4 px-4 text-xs tracking-wide uppercase cursor-pointer duration-100' onClick={handleToggle}>{props.type}</p>
+            <p className='text-white font-bold py-4 px-4 text-xs tracking-wide uppercase cursor-pointer duration-100' onClick={handleToggle}>{type}</p>
             <div className={` ${open ? 'block' : 'hidden'} transform bg-gray-800 px-4 py-4 rounded-xl font-semibold text-sm duration-100`}>
                 {state.map(movie => (
                     <Link key={movie.id} to={`/${movie.id}`}>

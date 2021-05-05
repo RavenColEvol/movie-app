@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { Switch, Route, useLocation } from 'react-router-dom'
 
 import Navbar from './Navbar'
@@ -6,10 +6,10 @@ import Home from './Home'
 import MovieDetail from './MovieDetail'
 import Sidebar from './Sidebar'
 
-export default () => {
+export default function Layout() {
 
     const location = useLocation();
-    console.log(process.env);
+    
     useLayoutEffect(() => {
       window.scrollTo(0, 0);
     }, [location.pathname]);

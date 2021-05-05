@@ -1,13 +1,19 @@
-import React, { useState } from 'react'
+import { ChangeEvent, useState, KeyboardEvent } from 'react'
 
+interface Props {
+    handleSearch: Function,
+    className: string
+}
 
-export default ({handleSearch, ...props}) => {
+export default function Search(props: Props) {
+    const { handleSearch } = props;
     const [query, setQuery] = useState('');
-    const handleChange = (e) => setQuery(e.target.value);
-    const handleSubmit = (e) => {
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => setQuery(e.target.value);
+    const handleSubmit = () => {
         handleSearch(query);
     }
-    const handleEnter = (e) => {
+    const handleEnter = (e: KeyboardEvent) : void => {
         if(e.key === 'Enter') handleSubmit();
     }
     return (
