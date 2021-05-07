@@ -1,13 +1,15 @@
-import { API_URL, API_KEY } from '../config'
 import SidebarItem from './SidebarItem'
 
-const openingThisWeek = `${API_URL}movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`;
-const nowPlayingUrl = `${API_URL}movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`;
-const topRatedUrl = `${API_URL}movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
-const aroundTheWebUrl = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+
+const CATEGORIES = [
+    {type:'upcoming', title: 'Opening this week'}, 
+    {type:'now_playing', title: 'Now playing'}, 
+    {type:'top_rated', title: 'Top Rated'}, 
+    {type:'popular', title: 'Around the web'}
+];
+
 
 export default function Sidebar() {
-
     return (
         <>
             <div
@@ -19,11 +21,7 @@ export default function Sidebar() {
                 className='w-full'
                 />
             </div>
-
-            <SidebarItem key='Opening this week' type='Opening this week' url={openingThisWeek}/>
-            <SidebarItem key='Now playing' type='Now playing' url={nowPlayingUrl}/>
-            <SidebarItem key='Top Rated' type='Top Rated' url={topRatedUrl}/>
-            <SidebarItem key='Around the web' type='Around the web' url={aroundTheWebUrl}/>
+            {CATEGORIES.map(({title, type}) => <SidebarItem key={type} category={type} title={title}/>)}
         </>
     )
 }

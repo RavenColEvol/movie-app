@@ -1,4 +1,5 @@
 import {useState, useEffect, CSSProperties} from 'react'
+import { Helmet } from 'react-helmet';
 
 import SimilarMovies from './SimilarMovies'
 import Title from './Title'
@@ -48,6 +49,10 @@ export default function MovieDetail(props: Props) {
     }, [props.match.params.movie_id])
 
     return (
+        <>
+        <Helmet>
+            <title>{movie.title}</title>
+        </Helmet>
         <div className='mx-auto max-w-screen-lg'>
             <div className="flex flex-col sm:flex-row">
 
@@ -90,5 +95,6 @@ export default function MovieDetail(props: Props) {
 
             <SimilarMovies movieId={props.match.params.movie_id}/>
         </div>
+        </>
     )
 }

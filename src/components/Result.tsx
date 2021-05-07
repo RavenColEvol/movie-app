@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {IMAGE_BASE_URL, POSTER_SIZE, API_URL, API_KEY} from '../config'
+import {IMAGE_BASE_URL, POSTER_SIZE, API_URL, API_KEY} from '../config';
 
 import MovieCard from './MovieCard';
 import Loader from './Loader';

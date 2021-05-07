@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
 
 import Title from './Title'
 import Search from './Search'
@@ -18,6 +19,9 @@ const Home = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Movie App</title>
+            </Helmet>
             <Title>Explore</Title>
             <Search className='md:mb-6 lg:mb-8 mb-4' handleSearch={handleSearch}/>
             <Title>{title} {new Date().getFullYear()}</Title>

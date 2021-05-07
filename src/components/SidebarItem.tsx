@@ -1,30 +1,26 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import { IMAGE_BASE_URL, MINI_SIZE } from '../config'
+import { fetchByCategory } from './hooks';
 import { IMovie } from './MovieDetail';
 
 interface Props {
-    url: string;
-    type: string
+    category: string;
+    title: string
 }
 
-export default function SideBarItem({url, type}: Props) {
+export default function SideBarItem({category, title}: Props) {
     const [open, setOpen] = useState(false);
-    const [state, setState] = useState([] as IMovie[]);
-
     const handleToggle = () => setOpen(!open)
 
-    useEffect(() => {
-        fetch(url)
-        .then(res => res.json())
-        .then(res => setState(res?.results?.splice(0, 5) || []));
-    }, [url]);
-
+    const { data, isLoading } = useQuery(category, () => fetchByCategory(category));
+    
     return (
-        <>
-            <p className='text-white font-bold py-4 px-4 text-xs tracking-wide uppercase cursor-pointer duration-100' onClick={handleToggle}>{type}</p>
+        isLoading ? <p>Loading</p> : <>
+            <p className='text-white font-bold py-4 px-4 text-xs tracking-wide uppercase cursor-pointer duration-100' onClick={handleToggle}>{title}</p>
             <div className={` ${open ? 'block' : 'hidden'} transform bg-gray-800 px-4 py-4 rounded-xl font-semibold text-sm duration-100`}>
-                {state.map(movie => (
+                {data.map((movie:IMovie) => (
                     <Link key={movie.id} to={`/${movie.id}`}>
                         <div className=" flex mb-4"  style={{cursor: 'pointer'}}>
                             <div className='overflow-hidden w-12 h-12 bg-cover rounded-lg w-2/12'>
