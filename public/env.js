@@ -166,6 +166,7 @@ window.env = {
   "npm_package_dependencies_react_query": "^3.15.2",
   "npm_package_dependencies_react_router_dom": "^5.2.0",
   "npm_package_dependencies_react_scripts": "^4.0.3",
+  "npm_package_dependencies_react_top_loading_bar": "^2.0.1",
   "npm_package_dependencies_typescript": "^4.3.0-beta",
   "npm_package_dependencies__testing_library_jest_dom": "^4.2.4",
   "npm_package_dependencies__testing_library_react": "^9.5.0",
@@ -181,7 +182,7 @@ window.env = {
   "npm_package_devDependencies_postcss_cli": "^7.1.1",
   "npm_package_devDependencies_tailwindcss": "^1.4.6",
   "npm_package_eslintConfig_extends": "react-app",
-  "npm_package_gitHead": "c31c30495d35cadf1b50ecd3790a64ae29186a41",
+  "npm_package_gitHead": "75a0413ed608bafe40f6dde1ca8505a1978c89ff",
   "npm_package_name": "movie",
   "npm_package_private": "true",
   "npm_package_readmeFilename": "README.md",
@@ -219,7 +220,6 @@ window.env = {
   "USERDOMAIN_ROAMINGPROFILE": "LAPTOP-6A91AA3S",
   "USERNAME": "oneco",
   "USERPROFILE": "C:\\Users\\oneco",
-  "VBOX_MSI_INSTALL_PATH": "C:\\Program Files\\Oracle\\VirtualBox\\",
   "windir": "C:\\WINDOWS",
   "_prog": "node"
 };
