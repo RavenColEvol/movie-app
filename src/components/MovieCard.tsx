@@ -30,7 +30,6 @@ export default function MovieCard(props:Props) {
     
     return (
         <div 
-            style={{'width':'12.5rem'}}
             className='card lg:col-span-3 md:col-span-4 sm:col-span-6 col-span-12 text-center mx-auto md:w-auto mb-8 rounded-lg  duration-300 ease-in-out text-gray-900 hover:shadow-xl transform hover:scale-105 hover:bg-gray-800 hover:text-white'>
             <Link to={`/${id}`}>    
                 <div className='card__img--shadow card__img--loader' style={{'--data-url': `url(${src})` } as CSSProperties} ref={loadingRef}>

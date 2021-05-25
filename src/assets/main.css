@@ -14360,6 +14360,10 @@ video {
   line-height: 1;
 }
 
+.card {
+  width: 12.5rem;
+}
+
 .card:hover .stars::before {
   content: '★★★★★';
   letter-spacing: 3px;
@@ -14379,6 +14383,7 @@ video {
 .card__img {
   width: 250px;
   height: auto;
+  -webkit-user-select: none;
 }
 
 .card__img--shadow::before {

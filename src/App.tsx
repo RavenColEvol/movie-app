@@ -1,6 +1,5 @@
 import {HashRouter as Router} from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from 'react-query';
-
 // Styles
 import './assets/main.css'
 

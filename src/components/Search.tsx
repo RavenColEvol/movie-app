@@ -22,9 +22,9 @@ export default function Search(props: Props) {
             value={query}
             onKeyUp={handleEnter}
             onChange={handleChange}
-            className={'md:text-xl text-normal bg-gray-300 rounded-lg md:py-3 md:px-6 py-2 px-3 focus:outline-none w-full font-semibold text-gray-800 ' + props.className} 
+            className={`md:text-xl text-sm bg-gray-300 rounded-lg md:py-3 md:px-6 py-2 px-3 focus:outline-none w-full font-semibold text-gray-800` + props.className} 
             />
-            <button onClick={handleSubmit} className='ml-2 rounded bg-gray-800 text-white uppercase md:text-xl text-normal tracking-wide font-semibold md:py-3 md:px-6 py-2 px-3'>Search</button>
+            <button onClick={handleSubmit} className='ml-2 rounded bg-gray-800 text-white uppercase md:text-xl text-sm tracking-wide font-semibold md:py-3 md:px-6 py-2 px-3'>Search</button>
         </div>
     )
 }
