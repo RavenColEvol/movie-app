@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-    --star-size: 18px;
+    --star-size: .9rem;
     --star-color: #fff;
 }
 
@@ -16,13 +16,20 @@
 .stars {
     --percent: calc(var(--rating) / 10 * 100%);
     display: inline-block;
-    font-size: var(--star-size);
+    font-size: 1.25rem;
     font-family: Times;
     line-height: 1;
 }
 
 .card {
     width: 12.5rem;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width:45rem) {
+    .card {
+        width: 10rem;
+    }
 }
 
 
@@ -50,11 +57,11 @@
 .card__img--shadow::before {
     content:'';
     position: absolute;
-    top: 10px;
+    top: .8rem;
     left: 0;
-    transform: scale(1.03);
-    width: 200px;
-    height: 300px;
+    transform: scale(1.1);
+    aspect-ratio: 2/3;
+    width: 100%;
     background: var(--data-url);
     background-size: cover;
     background-position: center center;

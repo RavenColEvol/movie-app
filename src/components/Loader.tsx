@@ -9,7 +9,7 @@ const loader = [1,2,3,4].map((_,idx) => {
                     <div className='card__img skeleton-box'></div>
                 </div>
             </div>
-            <h2 className='skeleton-box text-center mt-2 mb-1 font-semibold text-xs rounded-sm'></h2>
+            <h2 className='skeleton-box text-center mt-2 mb-1 font-semibold text-xs rounded-sm'> </h2>
             <div className="skeleton-box stars mb-2 rounded-sm">
             </div>
         </div>
