@@ -184,7 +184,7 @@ window.env = {
   "npm_package_devDependencies_tailwindcss": "^1.4.6",
   "npm_package_devDependencies__types_react_lazy_load_image_component": "^1.5.1",
   "npm_package_eslintConfig_extends": "react-app",
-  "npm_package_gitHead": "acf195bb715ae6b374938dc41d205fd57cef8493",
+  "npm_package_gitHead": "42bb2b36ee47c1a248b1eebaa25d079e6af48fdc",
   "npm_package_name": "movie",
   "npm_package_private": "true",
   "npm_package_readmeFilename": "README.md",

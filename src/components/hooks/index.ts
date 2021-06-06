@@ -21,5 +21,3 @@ export const fetchSimilarMovieById = async (movie_id:string) => {
     let json = await res.json();
     return json.results;
 }
-
-// export const fetchByQuery = async ()

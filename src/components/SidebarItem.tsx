@@ -7,11 +7,12 @@ import { IMovie } from './MovieDetail';
 
 interface Props {
     category: string;
-    title: string
+    title: string;
+    open: boolean;
 }
 
-export default function SideBarItem({category, title}: Props) {
-    const [open, setOpen] = useState(false);
+export default function SideBarItem({category, title, open: isOpen}: Props) {
+    const [open, setOpen] = useState(isOpen);
     const handleToggle = () => setOpen(!open)
 
     const { data, isLoading } = useQuery(category, () => fetchByCategory(category));

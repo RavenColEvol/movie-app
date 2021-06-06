@@ -2,7 +2,7 @@ import SidebarItem from './SidebarItem'
 
 
 const CATEGORIES = [
-    {type:'upcoming', title: 'Opening this week'}, 
+    {type:'upcoming', title: 'Opening this week', open: true}, 
     {type:'now_playing', title: 'Now playing'}, 
     {type:'top_rated', title: 'Top Rated'}, 
     {type:'popular', title: 'Around the web'}
@@ -21,7 +21,7 @@ export default function Sidebar() {
                 className='w-full'
                 />
             </div>
-            {CATEGORIES.map(({title, type}) => <SidebarItem key={type} category={type} title={title}/>)}
+            {CATEGORIES.map(({title, type, open}) => <SidebarItem key={type} category={type} title={title} open={Boolean(open)}/>)}
         </>
     )
 }

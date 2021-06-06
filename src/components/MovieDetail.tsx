@@ -36,7 +36,7 @@ export default function MovieDetail(props: Props) {
     console.log('data', data);
     useEffect(()=>{
         refetch();
-    }, [movie_id])
+    }, [movie_id, refetch])
 
     return (
         <>

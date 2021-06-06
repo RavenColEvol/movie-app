@@ -4,6 +4,7 @@ import {IMAGE_BASE_URL, POSTER_SIZE } from '../config'
 import { fetchSimilarMovieById } from './hooks';
 
 import MovieCard from './MovieCard'
+import Loader from './Loader';
 import { IMovie } from './MovieDetail';
 
 interface Props {
@@ -15,12 +16,15 @@ const SimilarMovies = ({movieId}: Props) => {
 
     useEffect(() => {
         refetch();
-    }, [movieId])
+    }, [movieId, refetch])
+
+    // const isEmpty = data.length === 0;
 
     return (
-        <>
-            { !isLoading && <div className='grid row-auto grid-cols-12 md:col-gap-6 md:row-gap-3 lg:col-gap-12 lg:row-gap-4 md:mr-4 lg:mr-0'>
-                {data.map((movie:IMovie) => (
+        <div className='grid row-auto grid-cols-12 md:col-gap-6 md:row-gap-3 lg:col-gap-12 lg:row-gap-4 md:mr-4 lg:mr-0'>
+            { isLoading ?
+                <Loader/> :
+                data.map((movie:IMovie) => (
                     <MovieCard
                         id={movie.id}
                         key={movie.id}
@@ -29,10 +33,9 @@ const SimilarMovies = ({movieId}: Props) => {
                         vote_average={movie.vote_average}
                         url={movie.id}
                     />
-                ))}
-            </div>
+                ))
             }
-        </>
+        </div>
     )
 }
 
