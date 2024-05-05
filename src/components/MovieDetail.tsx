@@ -1,6 +1,6 @@
 import { useEffect, CSSProperties} from 'react'
 import { Helmet } from 'react-helmet';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import SimilarMovies from './SimilarMovies'
 

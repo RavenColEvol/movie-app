@@ -1,5 +1,5 @@
 import {HashRouter as Router} from 'react-router-dom';
-import { QueryClientProvider, QueryClient } from 'react-query';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 // Styles
 import './assets/main.css'
 

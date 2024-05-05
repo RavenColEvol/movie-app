@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import {IMAGE_BASE_URL, POSTER_SIZE } from '../config'
 import { fetchSimilarMovieById } from './hooks';
 

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { IMAGE_BASE_URL, MINI_SIZE } from '../config'
 import { fetchByCategory } from './hooks';
