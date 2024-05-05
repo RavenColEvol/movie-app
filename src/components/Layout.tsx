@@ -1,9 +1,7 @@
 import { useLayoutEffect } from 'react'
-import { Switch, Route, useLocation } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 
 import Navbar from './Navbar'
-import Home from './Home'
-import MovieDetail from './MovieDetail'
 import Sidebar from './Sidebar'
 
 export default function Layout() {
@@ -23,12 +21,7 @@ export default function Layout() {
                 </section>
 
                 <section className='md:w-9/12 w-full px-6 md:px-4 ml-auto'>
-                    <Switch>
-                        <Route exact path='/'>
-                            <Home />
-                        </Route>
-                        <Route exact path='/:movie_id' component={MovieDetail} />
-                    </Switch>
+                    <Outlet />
                 </section>
 
             </div>

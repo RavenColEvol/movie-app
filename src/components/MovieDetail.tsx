@@ -5,16 +5,9 @@ import { useQuery } from '@tanstack/react-query';
 import SimilarMovies from './SimilarMovies'
 
 import {IMAGE_BASE_URL, BACKDROP_SIZE} from '../config'
-import { RouteComponentProps } from 'react-router'
 import { fetchMovieById } from './hooks';
 import Subtitle from './Subtitle';
-
-interface MatchParams {
-    movie_id: string
-}
-
-interface Props extends RouteComponentProps<MatchParams> {
-};
+import { useParams } from 'react-router-dom';
 
 export interface IMovie {
     id: number;
@@ -30,10 +23,13 @@ export interface IMovie {
     genres: { name: string }[]
 }
 
-export default function MovieDetail(props: Props) {
-    const movie_id = props.match.params.movie_id;
-    const { isLoading, data, refetch } = useQuery(['movie', movie_id], async () => await fetchMovieById(movie_id));
-    console.log('data', data);
+export default function MovieDetail() {
+    const params = useParams();
+    const movie_id = params.movie_id!;
+    const { isLoading, data, refetch } = useQuery({
+        queryKey: ['movie', movie_id], 
+        queryFn: async () => await fetchMovieById(movie_id),
+    });
     useEffect(()=>{
         refetch();
     }, [movie_id, refetch])
@@ -74,7 +70,7 @@ export default function MovieDetail(props: Props) {
             </div>
             <Subtitle className='uppercase ml-2'>Recommended</Subtitle>
 
-            <SimilarMovies movieId={props.match.params.movie_id}/>
+            <SimilarMovies movieId={movie_id}/>
         </div>}
         </>
     )

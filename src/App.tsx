@@ -1,19 +1,36 @@
-import {HashRouter as Router} from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 // Styles
 import './assets/main.css'
 
 import Layout from './components/Layout'
+import Home from './components/Home';
+import MovieDetail from './components/MovieDetail';
 
 const queryClient = new QueryClient();
+
+const router = createHashRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path: '',
+        element: <Home />
+      },
+      {
+        path: ':movie_id',
+        element: <MovieDetail />
+      }
+    ]
+  }
+])
 
 function App() {
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
-        <Router>
-          <Layout/>
-        </Router>
+        <RouterProvider router={router}/>
       </QueryClientProvider>
     </div>
   );

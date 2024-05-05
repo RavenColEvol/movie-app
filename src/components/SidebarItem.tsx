@@ -15,7 +15,10 @@ export default function SideBarItem({category, title, open: isOpen}: Props) {
     const [open, setOpen] = useState(isOpen);
     const handleToggle = () => setOpen(!open)
 
-    const { data, isLoading } = useQuery(category, () => fetchByCategory(category));
+    const { data, isLoading } = useQuery({
+        queryKey: [category],
+        queryFn: () => fetchByCategory(category)
+    });
     
     return (
         isLoading ? <p>Loading</p> : <>

@@ -12,7 +12,10 @@ interface Props {
 }
 
 const SimilarMovies = ({movieId}: Props) => {
-    const { data, refetch, isLoading } = useQuery(['similar', movieId], async () => await fetchSimilarMovieById(movieId))
+    const { data, refetch, isLoading } = useQuery({
+        queryKey: ['similar', movieId], 
+        queryFn: async () => await fetchSimilarMovieById(movieId)
+    })
 
     useEffect(() => {
         refetch();
