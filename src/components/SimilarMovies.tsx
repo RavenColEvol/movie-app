@@ -1,21 +1,18 @@
 import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {IMAGE_BASE_URL, POSTER_SIZE } from '../config'
-import { fetchSimilarMovieById } from './hooks';
 
 import MovieCard from './MovieCard'
 import Loader from './Loader';
 import { IMovie } from './MovieDetail';
+import { similarMovieOpts } from './api/options';
 
 interface Props {
     movieId: string;
 }
 
 const SimilarMovies = ({movieId}: Props) => {
-    const { data, refetch, isLoading } = useQuery({
-        queryKey: ['similar', movieId], 
-        queryFn: async () => await fetchSimilarMovieById(movieId)
-    })
+    const { data, refetch, isLoading } = useQuery(similarMovieOpts(movieId))
 
     useEffect(() => {
         refetch();

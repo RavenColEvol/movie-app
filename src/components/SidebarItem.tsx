@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { IMAGE_BASE_URL, MINI_SIZE } from '../config'
-import { fetchByCategory } from './hooks';
 import { IMovie } from './MovieDetail';
+import { categoryOpts } from './api/options';
 
 interface Props {
     category: string;
@@ -15,10 +15,7 @@ export default function SideBarItem({category, title, open: isOpen}: Props) {
     const [open, setOpen] = useState(isOpen);
     const handleToggle = () => setOpen(!open)
 
-    const { data, isLoading } = useQuery({
-        queryKey: [category],
-        queryFn: () => fetchByCategory(category)
-    });
+    const { data, isLoading } = useQuery(categoryOpts(category));
     
     return (
         isLoading ? <p>Loading</p> : <>

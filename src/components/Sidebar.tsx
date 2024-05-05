@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import SidebarItem from "./SidebarItem";
-import { fetchByCategory } from "./hooks";
 import { BACKDROP_SIZE, IMAGE_BASE_URL } from "../config";
 import Skeleton from "./Skeleton";
+import { categoryOpts } from "./api/options";
 
 enum CategoryType {
   upcoming = "upcoming",
@@ -19,9 +19,9 @@ const CATEGORIES = [
 ];
 
 export default function Sidebar() {
+  const defaultCategoryOptions = categoryOpts(CategoryType.popular);
   const { data, isLoading } = useQuery({
-    queryKey: [CategoryType.popular],
-    queryFn: () => fetchByCategory(CategoryType.popular),
+    ...defaultCategoryOptions,
     select: (data) => data[0],
   });
   
