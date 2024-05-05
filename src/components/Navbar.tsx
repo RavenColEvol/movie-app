@@ -9,9 +9,13 @@ export default function Navbar() {
                                     py-2 px-2 rounded text-xs  md:text-normal lg:text-lg'>
                 Movie app
             </Link>
-            <button className='bg-gray-900 text-white px-4 md:py-3 py-2 rounded-full font-semibold hover:shadow-lg text-xs md:text-normal flex items-center'>
+            <a 
+            href='https://github.com/RavenColEvol/movie-app'
+            target='_blank'
+            rel='noreferrer'
+            className='bg-gray-900 text-white px-4 md:py-3 py-2 rounded-full font-semibold hover:shadow-lg text-xs md:text-normal flex items-center'>
               <span className='text-base mr-2'>★</span>Star on Github
-            </button>
+            </a>
         </div>
       </nav>
     </>
