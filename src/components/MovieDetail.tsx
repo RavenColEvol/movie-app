@@ -1,10 +1,11 @@
 import { useEffect, CSSProperties } from "react";
 import { Helmet } from "react-helmet";
 import { useQuery } from "@tanstack/react-query";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import SimilarMovies from "./SimilarMovies";
 
-import { IMAGE_BASE_URL, BACKDROP_SIZE } from "../config";
+import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from "../config";
 import Subtitle from "./Subtitle";
 import { useParams } from "react-router-dom";
 import { movieDetailOpts } from "./api/options";
@@ -40,21 +41,23 @@ export default function MovieDetail() {
         <div className="mx-auto max-w-screen-lg">
           <div className="flex flex-col sm:flex-row mb-6">
             <div className="movie_detail--poster w-full sm:w-1/3 justify-start mb-4">
-              <img
+              <LazyLoadImage
                 style={{
                     viewTransitionName: `poster-img-${movie_id}`
                 }}
                 alt={data.title}
-                loading="lazy"
+                loading="eager"
+                placeholderSrc={`${IMAGE_BASE_URL}${POSTER_SIZE}${data.poster_path}`}
                 src={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${data.poster_path}`}
                 className="shadow-lg rounded-lg md:w-64 w-48 md:block hidden"
               />
-              <img
+              <LazyLoadImage
                 style={{
-                    viewTransitionName: `poster-img-${movie_id}`
+                    viewTransitionName: 'poster-img'
                 }}
-                loading="lazy"
-                src={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${data.backdrop_path}`}
+                loading="eager"
+                placeholderSrc={`${IMAGE_BASE_URL}${POSTER_SIZE}${data.poster_path}`}
+                src={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${data.poster_path}`}
                 className="shadow-lg rounded-lg md:hidden block"
                 alt={data.title}
               />
