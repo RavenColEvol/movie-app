@@ -42,7 +42,7 @@ export default function MovieDetail() {
             <div className="movie_detail--poster w-full sm:w-1/3 justify-start mb-4">
               <img
                 style={{
-                    viewTransitionName: 'poster-img'
+                    viewTransitionName: `poster-img-${movie_id}`
                 }}
                 alt={data.title}
                 loading="lazy"
@@ -51,7 +51,7 @@ export default function MovieDetail() {
               />
               <img
                 style={{
-                    viewTransitionName: 'poster-img'
+                    viewTransitionName: `poster-img-${movie_id}`
                 }}
                 loading="lazy"
                 src={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${data.backdrop_path}`}
@@ -62,7 +62,7 @@ export default function MovieDetail() {
 
             <div className="w-full sm:w-2/3 lg:pr-20 lg:pl-4 md:pl-8 px-2 md:pr-12">
               <h1 
-                style={{ viewTransitionName: 'poster-title' }}
+                style={{ viewTransitionName: `poster-title-${movie_id}` }}
                 className="md:text-4xl text-2xl text-gray-800 tracking-wide uppercase font-light">
                 {data.title}
               </h1>
@@ -72,7 +72,7 @@ export default function MovieDetail() {
               <div className="flex justify-between items-center mb-6">
                 <div
                   className="stars"
-                  style={{ "--rating": data.vote_average, viewTransitionName: 'poster-rating' } as CSSProperties}
+                  style={{ "--rating": data.vote_average, viewTransitionName: `poster-rating-${movie_id}` } as CSSProperties}
                 ></div>
                 <p className="text-gray-600 font-bold text-xs uppercase">
                   {data.runtime}min / {data.status}

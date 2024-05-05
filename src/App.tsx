@@ -7,7 +7,7 @@ import Layout from './components/Layout'
 import Home from './components/Home';
 import MovieDetail from './components/MovieDetail';
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 const router = createHashRouter([
   {
