@@ -7,7 +7,15 @@ import Layout from './components/Layout'
 import Home from './components/Home';
 import MovieDetail from './components/MovieDetail';
 
-export const queryClient = new QueryClient();
+export const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      gcTime: 5 * 1000,
+      refetchOnWindowFocus: false
+    }
+  }
+});
 
 const router = createHashRouter([
   {
