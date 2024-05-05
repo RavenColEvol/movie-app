@@ -10,10 +10,6 @@ export const movieDetailOpts = (movie_id: string) =>
   queryOptions({
     queryKey: ["movie", movie_id],
     queryFn: () => fetchMovieById(movie_id),
-    initialData: () => {
-      console.log('getting', movie_id, queryClient.getQueryData(['movie', movie_id]));
-      return;
-    }
   });
 
 export const categoryOpts = (category: string) =>
@@ -28,7 +24,7 @@ export const similarMovieOpts = (movie_id: string) =>
     queryFn: () => fetchSimilarMovieById(movie_id),
     select: (data) => {
       data.forEach((movie: any) =>
-        queryClient.setQueryData(movieDetailOpts(movie.id).queryKey, movie)
+        queryClient.setQueryData(movieDetailOpts(String(movie.id)).queryKey, movie)
       );
       return data;
     },

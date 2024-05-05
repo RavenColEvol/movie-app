@@ -83,7 +83,7 @@ export default function MovieDetail() {
                 <p className="uppercase text-gray-800 text-xs font-bold tracking-wide mb-2">
                   The genre
                 </p>
-                {data.genres.map((genre: { name: string }) => (
+                {data.genres?.map((genre: { name: string }) => (
                   <button
                     key={genre.name}
                     className="px-2 py-1 mr-1 mb-1 text-xs font-bold  mr-2 text-gray-800 bg-gray-200 rounded-full "

@@ -6,6 +6,8 @@ import Loader from "./Loader";
 import MovieCard from "./MovieCard";
 import { IMovie } from "./MovieDetail";
 import { fetchMovies } from "./hooks";
+import { movieDetailOpts } from "./api/options";
+import { queryClient } from "../App";
 
 interface Props {
   query: string;
@@ -19,6 +21,9 @@ function Result({ query }: Props) {
       initialPageParam: 1,
       getNextPageParam: (lastPage) => {
         if (lastPage.page === lastPage.total_pages) return;
+        lastPage.results.forEach((movie: any) =>
+          queryClient.setQueryData(movieDetailOpts(String(movie.id)).queryKey, movie)
+        );
         return lastPage.page + 1;
       },
       select: ({ pages }) => {

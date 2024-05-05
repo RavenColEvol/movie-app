@@ -5,7 +5,7 @@ export default function Navbar() {
     <>
       <nav className='sticky top-0 bg-white z-10'>
         <div className='flex justify-between items-center max-w-screen-xl px-4 mx-auto py-2'>
-            <Link to='/' className='font-bold uppercase trailing-wide bg-yellow-400 text-gray-900 
+            <Link to='/' unstable_viewTransition className='font-bold uppercase trailing-wide bg-yellow-400 text-gray-900 
                                     py-2 px-2 rounded text-xs  md:text-normal lg:text-lg'>
                 Movie app
             </Link>
