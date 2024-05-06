@@ -1,11 +1,10 @@
 import { useEffect, CSSProperties } from "react";
 import { Helmet } from "react-helmet";
 import { useQuery } from "@tanstack/react-query";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import SimilarMovies from "./SimilarMovies";
 
-import { IMAGE_BASE_URL, BACKDROP_SIZE, POSTER_SIZE } from "../config";
+import { IMAGE_BASE_URL, POSTER_SIZE, BACKDROP_SIZE } from "../config";
 import Subtitle from "./Subtitle";
 import { useParams } from "react-router-dom";
 import { movieDetailOpts } from "./api/options";
@@ -32,6 +31,15 @@ export default function MovieDetail() {
     refetch();
   }, [movie_id, refetch]);
 
+  const desktopSrc = {
+    low: `${IMAGE_BASE_URL}${POSTER_SIZE}${data?.poster_path}`,
+    high: `${IMAGE_BASE_URL}${BACKDROP_SIZE}${data?.poster_path}`
+  };
+  const mobileSrc = {
+    low: `${IMAGE_BASE_URL}${POSTER_SIZE}${data?.backdrop_path}`,
+    high: `${IMAGE_BASE_URL}${BACKDROP_SIZE}${data?.backdrop_path}`,
+  };
+
   return (
     <>
       <Helmet>
@@ -41,32 +49,43 @@ export default function MovieDetail() {
         <div className="mx-auto max-w-screen-lg">
           <div className="flex flex-col sm:flex-row mb-6">
             <div className="movie_detail--poster w-full sm:w-1/3 justify-start mb-4">
-              <LazyLoadImage
-                style={{
-                    viewTransitionName: `poster-img-${movie_id}`
+              <img
+                style={
+                  {
+                    viewTransitionName: `poster-img-${movie_id}`,
+                    "--data-url": `url(${desktopSrc.low})`,
+                  } as CSSProperties
+                }
+                onLoad={(event) => {
+                  event.currentTarget.src = desktopSrc.high;
                 }}
                 alt={data.title}
                 loading="eager"
-                placeholderSrc={`${IMAGE_BASE_URL}${POSTER_SIZE}${data.poster_path}`}
-                src={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${data.poster_path}`}
+                src={desktopSrc.low}
                 className="shadow-lg rounded-lg md:w-64 w-48 md:block hidden"
               />
-              <LazyLoadImage
-                style={{
-                    viewTransitionName: 'poster-img'
+              <img
+                style={
+                  {
+                    viewTransitionName: `poster-img-${movie_id}`,
+                    "--data-url": `url(${mobileSrc})`,
+                  } as CSSProperties
+                }
+                onLoad={(event) => {
+                  event.currentTarget.src = mobileSrc.high;
                 }}
                 loading="eager"
-                placeholderSrc={`${IMAGE_BASE_URL}${POSTER_SIZE}${data.poster_path}`}
-                src={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${data.poster_path}`}
+                src={mobileSrc.low}
                 className="shadow-lg rounded-lg md:hidden block"
                 alt={data.title}
               />
             </div>
 
             <div className="w-full sm:w-2/3 lg:pr-20 lg:pl-4 md:pl-8 px-2 md:pr-12">
-              <h1 
+              <h1
                 style={{ viewTransitionName: `poster-title-${movie_id}` }}
-                className="md:text-4xl text-2xl text-gray-800 tracking-wide uppercase font-light">
+                className="md:text-4xl text-2xl text-gray-800 tracking-wide uppercase font-light"
+              >
                 {data.title}
               </h1>
               <h2 className="text-gray-800 font-semibold mb-3 text-sm md:text-normal">
@@ -75,7 +94,12 @@ export default function MovieDetail() {
               <div className="flex justify-between items-center mb-6">
                 <div
                   className="stars"
-                  style={{ "--rating": data.vote_average, viewTransitionName: `poster-rating-${movie_id}` } as CSSProperties}
+                  style={
+                    {
+                      "--rating": data.vote_average,
+                      viewTransitionName: `poster-rating-${movie_id}`,
+                    } as CSSProperties
+                  }
                 ></div>
                 <p className="text-gray-600 font-bold text-xs uppercase">
                   {data.runtime}min / {data.status}

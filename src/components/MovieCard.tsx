@@ -50,6 +50,7 @@ export default function MovieCard(props: Props) {
               onLoad={handleLoad}
               onError={handleError}
               ref={ref}
+              loading="lazy"
             ></img>
           </div>
         </div>
