@@ -33,7 +33,7 @@ export default function MovieDetail() {
 
   const desktopSrc = {
     low: `${IMAGE_BASE_URL}${POSTER_SIZE}${data?.poster_path}`,
-    high: `${IMAGE_BASE_URL}${BACKDROP_SIZE}${data?.poster_path}`
+    high: `${IMAGE_BASE_URL}${BACKDROP_SIZE}${data?.poster_path}`,
   };
   const mobileSrc = {
     low: `${IMAGE_BASE_URL}${POSTER_SIZE}${data?.backdrop_path}`,
@@ -49,36 +49,50 @@ export default function MovieDetail() {
         <div className="mx-auto max-w-screen-lg">
           <div className="flex flex-col sm:flex-row mb-6">
             <div className="movie_detail--poster w-full sm:w-1/3 justify-start mb-4">
-              <img
+              <div
                 style={
-                  {
-                    viewTransitionName: `poster-img-${movie_id}`,
-                    "--data-url": `url(${desktopSrc.low})`,
-                  } as CSSProperties
+                  { "--data-url": `url(${desktopSrc.low})` } as CSSProperties
                 }
-                onLoad={(event) => {
-                  event.currentTarget.src = desktopSrc.high;
-                }}
-                alt={data.title}
-                loading="eager"
-                src={desktopSrc.low}
-                className="shadow-lg rounded-lg md:w-64 w-48 md:block hidden"
-              />
-              <img
+                className="card__img--shadow md:w-64 max-w-full rounded-lg"
+              >
+                <img
+                  style={
+                    {
+                      viewTransitionName: `poster-img-${movie_id}`,
+                      "--data-url": `url(${desktopSrc.low})`,
+                    } as CSSProperties
+                  }
+                  onLoad={(event) => {
+                    event.currentTarget.src = desktopSrc.high;
+                  }}
+                  alt={data.title}
+                  loading="eager"
+                  src={desktopSrc.low}
+                  className="rounded-lg md:w-64 max-w-full md:block hidden"
+                />
+              </div>
+              <div
                 style={
-                  {
-                    viewTransitionName: `poster-img-${movie_id}`,
-                    "--data-url": `url(${mobileSrc})`,
-                  } as CSSProperties
+                  { "--data-url": `url(${desktopSrc.low})` } as CSSProperties
                 }
-                onLoad={(event) => {
-                  event.currentTarget.src = mobileSrc.high;
-                }}
-                loading="eager"
-                src={mobileSrc.low}
-                className="shadow-lg rounded-lg md:hidden block"
-                alt={data.title}
-              />
+                className="card__img--shadow rounded-lg"
+              >
+                <img
+                  style={
+                    {
+                      viewTransitionName: `poster-img-${movie_id}`,
+                      "--data-url": `url(${mobileSrc})`,
+                    } as CSSProperties
+                  }
+                  onLoad={(event) => {
+                    event.currentTarget.src = mobileSrc.high;
+                  }}
+                  loading="eager"
+                  src={mobileSrc.low}
+                  className="rounded-lg md:hidden block"
+                  alt={data.title}
+                />
+              </div>
             </div>
 
             <div className="w-full sm:w-2/3 lg:pr-20 lg:pl-4 md:pl-8 px-2 md:pr-12">
